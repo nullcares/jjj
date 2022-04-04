@@ -521,7 +521,15 @@ function Factory:CreateWindow(WINDOW_PROPS)
 						bound = input.KeyCode
 						Bound.Text = bound.Name
 					elseif binding == false and type(callback) == 'function' and input.KeyCode == bound then
-						callback(bound)
+						callback(bound, 'pressed')
+					end
+				end
+			end)
+			
+			uis.InputEnded:Connect(function(input, gpe)
+				if not gpe then
+					if input.KeyCode == bound then
+						callback(bound, 'released')
 					end
 				end
 			end)
