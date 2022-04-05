@@ -107,7 +107,7 @@ function Factory:CreateWindow(WINDOW_PROPS)
 	end)
 	ScreenGui.Parent = game:GetService('CoreGui')
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	ScreenGui.name = 'chaching'
+	ScreenGui.Name = 'chaching'
 	ScreenGui.ResetOnSpawn = false
 
 	MainFrame.Name = "MainFrame"
