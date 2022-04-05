@@ -1,6 +1,7 @@
 local a = loadstring(game:HttpGet('https://raw.githubusercontent.com/nullcares/jjj/main/main.lua'))()
 local win = a:CreateWindow({
 	['Title'] = 'my gui';
+	['Toggle'] = Enum.KeyCode.LeftAlt; -- default bind
 })
 local a = win:NewTab('Tab A')
 win:NewTab('Dummy Tab #1')
