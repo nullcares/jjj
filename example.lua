@@ -1,4 +1,4 @@
-local a = loadstring(game.HttpGet('https://raw.githubusercontent.com/nullcares/jjj/main/main.lua'))()
+local a = loadstring(game:HttpGet('https://raw.githubusercontent.com/nullcares/jjj/main/main.lua'))()
 local win = a:CreateWindow({
 	['Title'] = 'my gui';
 })
