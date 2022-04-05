@@ -107,6 +107,10 @@ function Factory:CreateWindow(WINDOW_PROPS)
 	MainFrame.BorderSizePixel = 0
 	MainFrame.Position = UDim2.new(0.314948022, 0, 0.288288295, 0)
 	MainFrame.Size = UDim2.new(0.369304568, 0, 0.423423409, 0)
+	
+	local dragging = loadstring(game:GetService('InsertService'):LoadAsset(2780820589)[1].Source)()
+	local a = dragging.new(MainFrame)
+	a:Enable()
 
 	Navigation.Name = "Navigation"
 	Navigation.Parent = MainFrame
