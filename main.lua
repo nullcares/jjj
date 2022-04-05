@@ -1,6 +1,8 @@
 
 -- fuck
 
+local uis = game:GetService('UserInputService')
+
 local function switch_tabs(sel, children, tabs, page)
 	local status = {
 		[true] = Color3.fromRGB(88, 53, 223);
@@ -67,7 +69,7 @@ local function create_choice(dd, tab, callback)
 			dd.Visible = false
 		end)
 	end
-	local mp = game:GetService('UserInputService'):GetMouseLocation()
+	local mp = uis:GetMouseLocation()
 	dd.Position = UDim2.new(0, mp.X, 0, mp.Y - dd.AbsoluteSize.Y/2)
 	dd.Visible = true
 end
@@ -97,8 +99,15 @@ function Factory:CreateWindow(WINDOW_PROPS)
 	pcall(function()
 		syn.protect_gui()
 	end)
+	local bound = WINDOW_PROPS['Toggle'] or Enum.KeyCode.LeftAlt
+	uis.InputBegan:Connect(function(input, gpe)
+		if not gpe and input.KeyCode == bound then
+			ScreenGui.Enabled = not ScreenGui.Enabled
+		end
+	end)
 	ScreenGui.Parent = game:GetService('CoreGui')
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.name = 'chaching'
 	ScreenGui.ResetOnSpawn = false
 
 	MainFrame.Name = "MainFrame"
@@ -107,10 +116,6 @@ function Factory:CreateWindow(WINDOW_PROPS)
 	MainFrame.BorderSizePixel = 0
 	MainFrame.Position = UDim2.new(0.314948022, 0, 0.288288295, 0)
 	MainFrame.Size = UDim2.new(0.369304568, 0, 0.423423409, 0)
-	
-	local dragging = loadstring(game:HttpGet('https://raw.githubusercontent.com/nullcares/jjj/main/drag.lua'))()
-	local a = dragging.new(MainFrame)
-	a:Enable()
 
 	Navigation.Name = "Navigation"
 	Navigation.Parent = MainFrame
@@ -138,6 +143,10 @@ function Factory:CreateWindow(WINDOW_PROPS)
 	Toggle.Position = UDim2.new(0.954545438, 0, 0, 0)
 	Toggle.Size = UDim2.new(0.0454545468, 0, 1, 0)
 	Toggle.Image = "http://www.roblox.com/asset/?id=4988112250"
+	
+	Toggle.MouseButton1Click:Connect(function()
+		ScreenGui.Enabled = not ScreenGui.Enabled
+	end)
 
 	UIAspectRatioConstraint.Parent = Toggle
 
@@ -508,7 +517,7 @@ function Factory:CreateWindow(WINDOW_PROPS)
 			Bound.TextSize = 16.000
 			Bound.TextWrapped = true
 			
-			local uis = game:GetService('UserInputService')
+			local uis = uis
 			local binding = false
 			
 			Bound.MouseButton1Click:Connect(function()
