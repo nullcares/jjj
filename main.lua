@@ -118,7 +118,7 @@ function Factory:CreateWindow(WINDOW_PROPS)
 	MainFrame.Size = UDim2.new(0.369304568, 0, 0.423423409, 0)
 	
 	local drag = loadstring(game:HttpGet('https://raw.githubusercontent.com/nullcares/jjj/main/drag.lua'))()
-	local a = drag.new()
+	local a = drag.new(MainFrame)
 	a:Enable()
 
 	Navigation.Name = "Navigation"
